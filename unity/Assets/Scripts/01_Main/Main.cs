@@ -88,11 +88,13 @@ public class Main : MonoBehaviour
             {
 
                 Debug.Log(request.downloadHandler.text);
+
+                //아이디 저장
+                UserData.Instance.id = auth.id;
                 SceneManager.LoadScene("02_Lobby");
             }
             else//로그인 실패
             {
-
                 Debug.Log(request.error.ToString());
                 wrong_obj.SetActive(true);
             }

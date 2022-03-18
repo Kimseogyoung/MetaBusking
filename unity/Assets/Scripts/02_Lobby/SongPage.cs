@@ -1,27 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SongPage : MonoBehaviour
+public class SongPage : Page
 {
 
     public ListPageInSongPage listPage;
     public SearchPageInSongPage searchPage;
     public AddPageInSongPage addPage;
+    public Button searchBtn;
+    public Button addBtn;
+
+    public List<SongFolder> songFolderList;
     void Start()
     {
-        
-    }
+        songFolderList = new List<SongFolder>(GetComponentsInChildren<SongFolder>());
+        for(int i=0; i<songFolderList.Count; i++)
+        {
+            songFolderList[i].OnClickButton_ += listPage.Open;
+        }
 
-    public void open()
+        searchBtn.onClick.AddListener(searchPage.Open);
+        addBtn.onClick.AddListener(addPage.Open);
+    }
+    override public void Reset()
     {
-        gameObject.SetActive(true);
+        listPage.Close();
+        searchPage.Close();
+        addPage.Close();
     }
-    public void LoadListPage(int id)
-    {//id에 따라 알맞은 재생목록을 불러오는 함수
 
-
-    }
     // Update is called once per frame
     void Update()
     {

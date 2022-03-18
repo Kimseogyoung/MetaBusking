@@ -6,12 +6,13 @@ using TMPro;
 public class SongFolder : MonoBehaviour
 {
     public string folderName;
+    public string content;
     public int id;
     public Image img;
     public TextMeshProUGUI name_text;
     private Button btn;
 
-    public delegate void LoadSongListHandler(int id);
+    public delegate void LoadSongListHandler(int id,string str);
     public event LoadSongListHandler OnClickButton_;
     void Start()
     {
@@ -22,7 +23,7 @@ public class SongFolder : MonoBehaviour
     }
     void OnClickButton()
     {
-        OnClickButton_(id);
+        OnClickButton_(id, content);
     }
 
         // Update is called once per frame

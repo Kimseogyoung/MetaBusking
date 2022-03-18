@@ -14,7 +14,7 @@ public class LobbySetting : MonoBehaviour
         gotoMainSceneBtn.onClick.AddListener(delegate { SceneManager.LoadScene("01_Main"); });
     }
 
-    public void init()
+    public void Init()
     {//설정창 초기세팅 and 기존 설정 불러오기
         gameObject.SetActive(true);
     }
